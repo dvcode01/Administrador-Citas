@@ -16,6 +16,9 @@ const cita = {
     sintomas: ''
 };
 
+// Variables
+let citas = [];
+
 // Eventos
 listeners();
 
@@ -35,10 +38,15 @@ function datosCita(e){
 function submitCita(e){
     e.preventDefault();
 
+    // Comprobando si los campos estan vacios
     if(Object.values(cita).some(valor => valor.trim() === '')){
         mostrarAlerta('Todos los campos son obligatorios', 'error');
         return;
     }
+
+    // Guardando cita
+    citas = [...citas, cita];
+    mostrarAlerta('Guardado correctamente', 'success');
 }
 
 function mostrarAlerta(msg, tipo){
