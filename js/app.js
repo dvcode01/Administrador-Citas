@@ -35,7 +35,35 @@ function datosCita(e){
 function submitCita(e){
     e.preventDefault();
 
-    
+    if(Object.values(cita).some(valor => valor.trim() === '')){
+        mostrarAlerta('Todos los campos son obligatorios', 'error');
+        return;
+    }
+}
+
+function mostrarAlerta(msg, tipo){
+    // Eliminando alertas duplicadas
+    const alertaPrevia = document.querySelector('.alert');
+    alertaPrevia?.remove();
+
+    // Creacion alerta
+    const alerta = document.createElement('div');
+    alerta.textContent = msg;
+    alerta.classList.add('p-3', 'text-center', 'w-full', 'text-white', 'my-5', 'alert', 'uppercase', 'text-sm', 'font-bold');
+
+    if(tipo === 'error'){
+        alerta.classList.add('bg-red-500');
+    }else{
+        alerta.classList.add('bg-green-500');
+    }
+
+    // Insertando antes del formulario en el DOM
+    formularioCita.parentElement.insertBefore(alerta, formularioCita);
+
+    // Eliminando
+    setTimeout(() => {
+        alerta.remove();
+    }, 3000);
 }
 
 
