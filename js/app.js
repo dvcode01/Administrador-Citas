@@ -4,7 +4,8 @@ const inputPropietario = document.querySelector('#propietario');
 const inputEmail = document.querySelector('#email');
 const inputFecha = document.querySelector('#fecha');
 const inputSintomas = document.querySelector('#sintomas');
-const formularioCita = document.querySelector('#formulario-cita')
+const formularioCita = document.querySelector('#formulario-cita');
+const citasContainer = document.querySelector('#citas');
 
 // Objeto cita
 const cita = {
@@ -47,6 +48,61 @@ function submitCita(e){
     // Guardando cita
     citas = [...citas, cita];
     mostrarAlerta('Guardado correctamente', 'success');
+
+    // Mostrando citas
+    mostrarCitas();
+
+    // Reseteando formulario
+    
+}
+
+function mostrarCitas(){
+    // Limpiar HTML
+    limpiarCitas();
+
+    // Generando citas
+    citas.forEach(cita => {
+        const {id, paciente, propietario, email, fecha, sintomas} = cita;
+
+        const citaDiv = document.createElement('div');
+        citaDiv.classList.add('mx-5', 'my-10', 'bg-white', 'shadow-md', 'px-5', 'py-10', 'rounded-xl');
+
+        const citaPaciente = document.createElement('p');
+        citaPaciente.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case');
+        citaPaciente.innerHTML = `<span class="font-bold uppercase">Paciente: </span> ${paciente}`;
+
+        const citaPropietario = document.createElement('p');
+        citaPropietario.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case');
+        citaPropietario.innerHTML = `<span class="font-bold uppercase">Propietario: </span> ${propietario}`;
+
+        const citaEmail = document.createElement('p');
+        citaEmail.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+        citaEmail.innerHTML = `<span class="font-bold uppercase">E-mail: </span> ${email}`;
+
+        const citaFecha = document.createElement('p');
+        citaFecha.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+        citaFecha.innerHTML = `<span class="font-bold uppercase">Fecha: </span> ${fecha}`;
+
+        const citaSintomas = document.createElement('p');
+        citaSintomas.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+        citaSintomas.innerHTML = `<span class="font-bold uppercase">Síntomas: </span> ${sintomas}`;
+
+        // Agregando la informacion a la cita
+        citaDiv.appendChild(citaPaciente);
+        citaDiv.appendChild(citaPropietario);
+        citaDiv.appendChild(citaEmail);
+        citaDiv.appendChild(citaFecha);
+        citaDiv.appendChild(citaSintomas);
+
+        // Agregando al contenedor de las citas
+        citasContainer.appendChild(citaDiv);
+    });
+}
+
+function limpiarCitas(){
+    while(citasContainer.firstChild){
+        citasContainer.removeChild(citasContainer.firstChild);
+    }
 }
 
 function mostrarAlerta(msg, tipo){
