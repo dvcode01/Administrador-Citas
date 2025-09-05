@@ -1,15 +1,6 @@
 
 import Notificacion from "./classes/Notificacion.js";
-
-// Selectores
-const inputPaciente = document.querySelector('#paciente');
-const inputPropietario = document.querySelector('#propietario');
-const inputEmail = document.querySelector('#email');
-const inputFecha = document.querySelector('#fecha');
-const inputSintomas = document.querySelector('#sintomas');
-const formularioCita = document.querySelector('#formulario-cita');
-const formularioInput = document.querySelector('#formulario-cita input[type="submit"]');
-const citasContainer = document.querySelector('#citas');
+import { citasContainer, formularioCita, formularioInput, inputEmail, inputFecha, inputPaciente, inputPropietario, inputSintomas } from './selectores.js';
 
 let editando = false;
 
