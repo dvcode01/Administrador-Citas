@@ -1,0 +1,21 @@
+{
+  "name": "administrador_citas_js",
+  "version": "1.0.0",
+  "description": "Proyecto de administracion de citas para una veterinaria",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "html",
+    "tailwindcss"
+  ],
+  "author": "David Olivero",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.1.3"
+  }
+}
