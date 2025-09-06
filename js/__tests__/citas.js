@@ -1,5 +1,5 @@
 
-import { AdminCitas } from '../js/classes/AdminCitas';
+import { AdminCitas } from '../classes/AdminCitas.js';
 
 describe('Probando las funciones de la clase AdminCitas', () => {
     const citas = new AdminCitas();
